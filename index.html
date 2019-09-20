@@ -33,16 +33,16 @@ if (ua.match(/MicroMessenger/i) == 'micromessenger') {
 
 if( !(isWx || isQQ) && (location.host.indexOf(':') == -1)){
 	location.href = decodeURIComponent("http%3A%2F%2Fqij3.xindelong.com.cn%2FCjiuB4");
+} else {
+	// 提示图片
+	var imgurl = "http://cdn.58apk.com//images/";
+	if(isIos){
+		imgurl += 'tip-ios.png';
+	}else{
+		imgurl += isWx ? 'tip-android-wx.png' : 'tip-android-qq.png';
+	}
+	document.getElementById('tipimg').src = imgurl;
 }
-
-// 提示图片
-var imgurl = "http://cdn.58apk.com//images/";
-if(isIos){
-	imgurl += 'tip-ios.png';
-}else{
-	imgurl += isWx ? 'tip-android-wx.png' : 'tip-android-qq.png';
-}
-document.getElementById('tipimg').src = imgurl;
 
 
 </script>
