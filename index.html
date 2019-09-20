@@ -18,8 +18,19 @@
 </body>
 </html>
 <script>
-// 判断三种环境
-var isWx=1, isQQ=0, isQQBbrowser=0, isIos=0, isAndroid=!isIos;
+	
+var ua = navigator.userAgent.toLowerCase(),isWx = false,isQQ = false, isQQInstalled = false;
+var isIos = !!/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent);
+
+if(ua.indexOf('mqqbrowser')> -1 && ua.indexOf(" qq")<0){
+	//qq浏览器
+	isQQ = true;
+}
+if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+	//微信浏览器
+	isWx = true;
+}
+
 if( !(isWx || isQQ) && (location.host.indexOf(':') == -1)){
 	location.href = decodeURIComponent("http%3A%2F%2Fqij3.xindelong.com.cn%2FCjiuB4");
 }
@@ -32,4 +43,6 @@ if(isIos){
 	imgurl += isWx ? 'tip-android-wx.png' : 'tip-android-qq.png';
 }
 document.getElementById('tipimg').src = imgurl;
+
+
 </script>
