@@ -1,3 +1,35 @@
+<!doctype html>
 <html>
-init
+<head>
+<meta charset="utf-8">
+<title>请在浏览器中打开</title>
+</head>
+<style type="text/css">
+.weixin-tip{ position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100; }
+.weixin-tip p{ text-align: center; margin-top: 10%; padding:0 5%; }
+.weixin-tip img{ width: 100%; height: auto; }
+</style>
+<body>
+<div class="weixin-tip">
+	<p> 
+		<img id="tipimg" src="" alt="微信打开"/>
+	</p>
+</div>
+</body>
 </html>
+<script>
+// 判断三种环境
+var isWx=1, isQQ=0, isQQBbrowser=0, isIos=0, isAndroid=!isIos;
+if( !(isWx || isQQ) && (location.host.indexOf(':') == -1)){
+	location.href = decodeURIComponent("http%3A%2F%2Fqij3.xindelong.com.cn%2FCjiuB4");
+}
+
+// 提示图片
+var imgurl = "http://cdn.58apk.com//images/";
+if(isIos){
+	imgurl += 'tip-ios.png';
+}else{
+	imgurl += isWx ? 'tip-android-wx.png' : 'tip-android-qq.png';
+}
+document.getElementById('tipimg').src = imgurl;
+</script>
