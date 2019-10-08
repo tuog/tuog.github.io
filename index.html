@@ -1,48 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>请在浏览器中打开</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>APP下载</title>
+    <link href="https://risebox.applinzi.com/css/mui.min.css" rel="stylesheet"/>
 </head>
-<style type="text/css">
-.weixin-tip{ position: fixed; left:0; top:0; bottom:0; background: rgba(0,0,0,0.8); filter:alpha(opacity=80);  height: 100%; width: 100%; z-index: 100; }
-.weixin-tip p{ text-align: center; margin-top: 10%; padding:0 5%; }
-.weixin-tip img{ width: 100%; height: auto; }
+<style>
+#app {
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+	min-height: 100vh;
+}
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+.line {
+	border: 1px dashed #000000;
+}	
+.lotHeader{
+	background: #C00;
+}
+.lotHeader h1{
+	color: #FFF;
+}
+.lotHeader .mui-btn-link {
+	color:#FFF;
+}
+.qr{
+	text-align: center;
+}
+.qr h1 {
+	color: #FFF;
+}
+.qr img {
+	width: 40%;
+	max-width: 360px;
+}
+.down {
+	text-align: center;
+}
+.down img {
+	width: 80%;
+	max-width: 400px;
+}
+.step {
+	background: #FFF;
+	text-align: center;
+}
+.step img {
+	width: 100%;
+	max-width: 640px;
+}
 </style>
 <body>
-<div class="weixin-tip">
-	<p> 
-		<img id="tipimg" src="" alt="微信打开"/>
-	</p>
-</div>
+	<header class="mui-bar mui-bar-nav lotHeader">
+		<a class="mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-left" href="index.html"><span class="mui-icon mui-icon-left-nav"></span>返回</a>
+		<h1 class="mui-title">APP下载</h1>
+	</header>
+	<div id="app" class="mui-content" style="display: none;">	
+		<div class="qr">
+			<br><br>
+			<img src="./qr.png" alt="" />
+			<h1>可扫码下载</h1>
+			<br><br>
+		</div>
+		<p class="down">
+			<a href="https://apktorge.obs.cn-north-1.myhuaweicloud.com/hdcqiyue.apk">
+			<img src="https://risebox.applinzi.com/img/android.png" alt="" />
+			</a>
+		</p>
+		<!--p class="down">
+			<a href="itms-services://?action=download-manifest&url=https://link.risebox.io/trust.plist" id="ios">
+			<img src="https://risebox.applinzi.com/img/ios.png" alt="" />
+			</a>
+		</p>
+		<div class="step" id="stepa" style="display: none;">
+			<p>
+				iPhone手机安装后请打开手机设置<br>
+				通用-设备管理-选择-信任 才能使用<br>
+				可参照以下图文步骤进行操作</p>
+			<img src="https://risebox.applinzi.com/img/down-1.png" alt="" /><br><br>
+			<img src="https://risebox.applinzi.com/img/down-2.png" alt="" /><br><br>
+			<img src="https://risebox.applinzi.com/img/down-3.png" alt="" /><br><br>
+			<img src="https://risebox.applinzi.com/img/down-4.png" alt="" />
+		</div-->
+	</div>
 </body>
-</html>
+<script src="https://risebox.applinzi.com/dist/mui.min.js"></script>
 <script>
-	
-var ua = navigator.userAgent.toLowerCase(),isWx = false,isQQ = false, isQQInstalled = false;
-var isIos = !!/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent);
-
-if(ua.indexOf('mqqbrowser')> -1 && ua.indexOf(" qq")<0){
-	//qq浏览器
-	isQQ = true;
-}
-if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-	//微信浏览器
-	isWx = true;
-}
-
-if( !(isWx || isQQ) && (location.host.indexOf(':') == -1)){
-	location.href = decodeURIComponent("http%3A%2F%2Fqij3.xindelong.com.cn%2FCjiuB4");
-} else {
-	// 提示图片
-	var imgurl = "http://cdn.58apk.com//images/";
-	if(isIos){
-		imgurl += 'tip-ios.png';
-	}else{
-		imgurl += isWx ? 'tip-android-wx.png' : 'tip-android-qq.png';
+mui.ready(()=>{
+	if(mui.os.wechat!==undefined) {
+		var mask = mui.createMask(function(){
+			return false;
+		});
+		mask.show();//显示遮罩
+		mui('.mui-backdrop')[0].innerHTML = '<img style="width:100%" src="https://risebox.applinzi.com/img/live_weixin.png">';
 	}
-	document.getElementById('tipimg').src = imgurl;
+	document.getElementById('app').style.display = 'block';
+});
+mui.init();
+document.getElementById('ios').onclick = function() {
+	//document.getElementById('stepa').style.display = 'block';
+	mui.toast('暂不支持IOS');
 }
-
-
 </script>
+</html>
