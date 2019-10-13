@@ -16,13 +16,13 @@
                 <key>metadata</key>
                 <dict>
                     <key>bundle-identifier</key>
-                     <string>io.dcloud.UNI4AC3152</string><!--修改这里-->
+                     <string>io.dcloud.UNIDDFDA0F</string><!--修改这里-->
                      <key>bundle-version</key>
-                    <string>1.1.0</string><!--修改这里-->
+                    <string>1.0.04</string><!--修改这里-->
                     <key>kind</key>
                     <string>software</string>
                     <key>title</key>
-                    <string>SDS</string><!--修改这里-->
+                    <string>HDC</string><!--修改这里-->
                 </dict>
             </dict>
         </array>
