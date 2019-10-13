@@ -18,7 +18,7 @@
                     <key>bundle-identifier</key>
                      <string>io.dcloud.UNIDDFDA0F</string><!--修改这里-->
                      <key>bundle-version</key>
-                    <string>1.0.04</string><!--修改这里-->
+                    <string>1.0.4</string><!--修改这里-->
                     <key>kind</key>
                     <string>software</string>
                     <key>title</key>
