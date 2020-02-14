@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <h3>百元裸运费开票金额 <span id="real"></span>元 </h3>
+    
+    <p>
+        104.3元<input style="width:60%" type="range" min="104.3" max="109.0" step="0.1">109元
+    </p>
+    <p>
+        返税<span id="f"></span>元 <br>
+        货主100元节省<span id="j"></span>元 <br>
+        平台赚<span id="z"></span>元 <br>
+    </p>
+
+</body>
+<script>
+$(function(){
+var calc = function(x) { // x为开票额
+    var f = x*9/218; // 返税c
+    var j = 100-x*100/109; //平台节省
+    var z = f-j;
+
+    $('#real').html(x);
+    $('#f').html( f.toFixed(2) );
+    $('#j').html( j.toFixed(2) );
+    $('#z').html( z.toFixed(2) );
+};
+
+calc( parseFloat($('input').val()) );
+
+$('input').on('input propertychange',function(){
+    var x = parseFloat(this.value); // 开票额
+    calc(x);
+})
+
+});
+</script>
+</html>
